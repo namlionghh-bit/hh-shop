@@ -55,7 +55,6 @@
       align-items: center;
     }
 
-    /* 🟢 LOGO 圖片專用樣式 */
     .brand-logo-img {
       max-height: 52px;
       max-width: 220px;
@@ -305,7 +304,6 @@
 
 <!-- 頂部 Hero 區塊 -->
 <div class="brand-hero">
-  <!-- 🟢 自動載入 GitHub 儲存庫中的 logo.png (若找不到自動切換純文字備援) -->
   <img id="brandLogoImg" class="brand-logo-img" src="logo.png" alt="H&H Logo" onerror="this.style.display='none'; document.getElementById('brandLogoFallback').style.display='block';">
   
   <div id="brandLogoFallback" class="brand-logo-text" style="display: none;">H&H</div>
@@ -420,6 +418,7 @@
 </footer>
 
 <script>
+  // 🟢 更新為最新的正式網址
   const GAS_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwBpgyNDop7-1glUIBgCTQa3JfJqGKu2xJKwt6ci9BFGvW5KUfY7ujr8AL2eV0XUzhy/exec";
   
   function createFallbackImage() {
@@ -702,7 +701,7 @@
 
     if (paymentMethod === "銀行轉帳") {
       if (!/^\d{5}$/.test(bankLast5)) {
-        alert("選擇銀行轉帳請填寫正確的「帳號末五碼」（必須為恰好 5 码數字，不能少也不能多）！");
+        alert("選擇銀行轉帳請填寫正確的「帳號末五碼」（必須為恰好 5 碼數字，不能少也不能多）！");
         return;
       }
     }

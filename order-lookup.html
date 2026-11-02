@@ -141,6 +141,7 @@
 </div>
 
 <script>
+  // 🟢 更新為最新的正式網址
   const GAS_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwBpgyNDop7-1glUIBgCTQa3JfJqGKu2xJKwt6ci9BFGvW5KUfY7ujr8AL2eV0XUzhy/exec";
 
   window.addEventListener('DOMContentLoaded', () => {
@@ -176,7 +177,6 @@
       });
   }
 
-  // 🛡️ DOM XSS 安全渲染與個資安全顯示
   function renderOrders(orders) {
     const container = document.getElementById('resultArea');
     container.textContent = '';
