@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>H&H 品牌嚴選 - 訂單進度查詢</title>
+  <title>南良國際 H&H 品牌嚴選館 - 訂單與對帳查詢</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
@@ -15,11 +15,10 @@
       --bg-light: #f8fafc;
       --card-bg: #ffffff;
       --text-main: #0f172a;
-      --text-sub: #64748b;
+      --text-sub: #475569;
       --border-color: #e2e8f0;
-      --radius-lg: 20px;
-      --radius-md: 12px;
-      --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.04);
+      --radius-lg: 16px;
+      --radius-md: 10px;
     }
 
     * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
@@ -29,249 +28,213 @@
       background-color: var(--bg-light);
       color: var(--text-main);
       margin: 0;
-      padding: 0 0 50px 0;
-      line-height: 1.5;
+      padding: 0 0 60px 0;
+      line-height: 1.6;
     }
 
     .container {
-      max-width: 680px;
+      max-width: 800px;
       margin: 0 auto;
       padding: 0 16px;
     }
 
-    .brand-hero {
-      background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #1e3a8a 100%);
+    .header-banner {
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
       color: #ffffff;
-      padding: 32px 20px 24px 20px;
+      padding: 30px 20px;
       text-align: center;
-      border-radius: 0 0 24px 24px;
+      border-radius: 0 0 20px 20px;
       margin-bottom: 24px;
       box-shadow: 0 10px 20px rgba(15, 23, 42, 0.15);
     }
 
-    .brand-company-title {
-      font-family: 'Noto Sans TC', sans-serif;
-      font-size: 1.6rem;
-      font-weight: 700;
-      letter-spacing: 4px;
-      margin: 0 0 4px 0;
-      color: #ffffff;
-    }
-
-    .brand-subtitle {
-      font-size: 0.85rem;
-      color: #94a3b8;
-      letter-spacing: 2px;
-      margin-top: 4px;
-    }
-
-    .search-card {
+    .card-block {
       background: var(--card-bg);
       border-radius: var(--radius-lg);
       padding: 24px;
       border: 1px solid var(--border-color);
-      box-shadow: var(--shadow-sm);
-      margin-bottom: 24px;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+      margin-bottom: 20px;
     }
 
-    .search-title {
-      font-size: 1.1rem;
-      font-weight: 800;
-      margin-bottom: 14px;
-      color: var(--brand-dark);
-    }
-
-    .search-box {
-      display: flex;
-      gap: 10px;
-    }
-
-    .search-input {
-      flex: 1;
-      padding: 14px;
-      border: 1.5px solid var(--border-color);
+    .form-control {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid var(--border-color);
       border-radius: var(--radius-md);
       font-size: 1rem;
-      outline: none;
+      margin-bottom: 12px;
     }
 
-    .search-input:focus {
-      border-color: var(--brand-primary);
-    }
-
-    .search-btn {
-      background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
-      color: white;
+    .btn-search {
+      width: 100%;
+      background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+      color: #ffffff;
+      padding: 14px;
       border: none;
-      padding: 0 24px;
       border-radius: var(--radius-md);
       font-weight: 800;
       font-size: 1rem;
       cursor: pointer;
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
     }
 
     .order-card {
-      background: var(--card-bg);
-      border-radius: var(--radius-lg);
-      padding: 20px;
       border: 1px solid var(--border-color);
-      box-shadow: var(--shadow-sm);
+      border-radius: var(--radius-md);
+      padding: 16px;
       margin-bottom: 16px;
+      background: #ffffff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.02);
     }
 
-    .order-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid var(--border-color);
-      padding-bottom: 12px;
-      margin-bottom: 12px;
-    }
-
-    .order-id {
-      font-weight: 800;
-      font-size: 1.05rem;
-      color: var(--brand-dark);
-    }
-
-    .status-badge {
-      padding: 4px 10px;
-      border-radius: 20px;
+    .badge {
+      display: inline-block;
+      padding: 4px 8px;
+      border-radius: 4px;
       font-size: 0.8rem;
-      font-weight: 800;
-    }
-
-    .badge-paid { background: #dcfce7; color: #15803d; }
-    .badge-pending { background: #fef9c3; color: #a16207; }
-    .badge-cancel { background: #fee2e2; color: #b91c1c; }
-
-    .order-detail {
-      font-size: 0.92rem;
-      color: var(--text-sub);
-      line-height: 1.6;
-    }
-
-    .order-items {
-      background: #f8fafc;
-      padding: 10px 14px;
-      border-radius: 8px;
-      margin: 8px 0;
-      font-weight: 600;
-      color: var(--text-main);
-      white-space: pre-line;
-    }
-
-    .back-home {
-      text-align: center;
-      margin-top: 24px;
-    }
-
-    .back-home a {
-      color: var(--brand-primary);
-      text-decoration: none;
       font-weight: 700;
     }
-
-    .contact-info-box {
-      text-align: center;
-      margin-top: 18px;
-      padding: 12px;
-      background: #eff6ff;
-      border-radius: 12px;
-      color: var(--brand-primary);
-      font-weight: 700;
-      font-size: 0.9rem;
-    }
+    .badge-pending { background: #fef3c7; color: #92400e; }
+    .badge-success { background: #dcfce7; color: #166534; }
   </style>
 </head>
 <body>
 
-<div class="brand-hero">
-  <div class="brand-company-title">南良國際</div>
-  <div class="brand-subtitle">訂單進度與狀態查詢</div>
+<div class="header-banner">
+  <h2 style="margin:0; font-size: 1.5rem;">🔍 訂單進度與對帳查詢</h2>
+  <div style="font-size:0.9rem; color:#cbd5e1; margin-top:4px;">南良國際股份有限公司台南分公司</div>
 </div>
 
 <div class="container">
-  <div class="search-card">
-    <div class="search-title">🔍 查詢您的訂單</div>
-    <div class="search-box">
-      <input type="text" id="searchInput" class="search-input" placeholder="請輸入訂購手機號碼或訂單編號">
-      <button class="search-btn" onclick="performLookup()">查詢</button>
+  
+  <!-- 查詢輸入卡片 -->
+  <div class="card-block">
+    <label for="searchInput" style="font-weight:700; display:block; margin-bottom:8px;">請輸入行動電話或訂單編號：</label>
+    <input type="text" id="searchInput" class="form-control" placeholder="例：0912345678 或 20261102K8A9P2">
+    <button class="btn-search" onclick="performSearch()">立即查詢</button>
+  </div>
+
+  <!-- 查詢結果渲染區 -->
+  <div id="resultArea"></div>
+
+  <!-- 💳 第一銀行轉帳資訊與對帳說明卡片 -->
+  <div class="card-block" style="background: #eff6ff; border: 1.5px solid #3b82f6;">
+    <h4 style="margin: 0 0 10px 0; font-size: 1.1rem; color: #1e3a8a; display: flex; align-items: center; gap: 6px;">
+      💳 轉帳匯款資訊與對帳說明
+    </h4>
+    <div style="background: #ffffff; padding: 14px 16px; border-radius: 8px; font-weight: 700; color: #0f172a; margin-bottom: 12px; border: 1px solid #bfdbfe; line-height: 1.8;">
+      銀行代碼：<span style="color: #1e3a8a;">007 第一銀行</span><br>
+      匯款帳號：<span style="color: #1e3a8a; font-size: 1.15rem; letter-spacing: 1px;">60110065896</span><br>
+      戶名：南良國際股份有限公司台南分公司
     </div>
+    <p style="margin: 0; font-size: 0.92rem; color: #1e40af; line-height: 1.6;">
+      ⚠️ <strong>對帳提醒：</strong>請於匯款後提供 <strong>「訂單單號或手機號碼 + 訂購大名 + 帳號末五碼 + 匯款金額」</strong> 至 <a href="https://line.me/R/ti/p/@792mygta" target="_blank" rel="noopener noreferrer" style="color: #059669; font-weight: 800; text-decoration: underline;">H&H 官方 LINE (@792mygta)</a>，或撥打免付費專線 <a href="tel:0800660677" style="color: #1d4ed8; font-weight: 800;">0800-660-677</a> 來電告知。<br>
+      訂購商品將於確認匯款成功後 <strong>3 個工作日內安排出貨</strong>。
+    </p>
   </div>
 
-  <div id="resultsList"></div>
-
-  <div class="contact-info-box">
-    📞 客服免付費專線：<a href="tel:0800660677" style="color:var(--brand-primary); text-decoration:underline;">0800-660-677</a>
+  <div style="text-align:center; margin-top:24px;">
+    <a href="index.html" style="color:var(--brand-primary); text-decoration:none; font-weight:700; font-size: 0.98rem;">← 返回團購旗艦館頁面</a>
   </div>
 
-  <div class="back-home">
-    <a href="index.html">← 返回團購旗艦館頁面</a>
-  </div>
 </div>
 
 <script>
-  // ⚠️ 請填寫您的 Google Apps Script Web App API 部署網址 (需以 /exec 結尾)
-  const GAS_API_URL = "https://script.google.com/macros/s/AKfycbxLmaRbdC9jM9t3CerENr61l8yVHchvme6hXTdJZ7kMFOpr1JuOjMarmjJkoo4g4a_klQ/exec"; 
+  const GAS_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwBpgyNDop7-1glUIBgCTQa3JfJqGKu2xJKwt6ci9BFGvW5KUfY7ujr8AL2eV0XUzhy/exec";
 
-  function performLookup() {
-    const query = document.getElementById('searchInput').value.trim();
-    if (!query) {
+  window.addEventListener('DOMContentLoaded', () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const q = urlParams.get('query');
+    if (q) {
+      document.getElementById('searchInput').value = q;
+      performSearch();
+    }
+  });
+
+  function performSearch() {
+    const q = document.getElementById('searchInput').value.trim();
+    if (!q) {
       alert("請輸入手機號碼或訂單編號！");
       return;
     }
 
-    const container = document.getElementById('resultsList');
-    container.innerHTML = `<div style="text-align:center; padding: 20px; color: var(--text-sub);">正在查詢訂單資料中...</div>`;
+    const container = document.getElementById('resultArea');
+    container.textContent = "查詢中...";
 
-    fetch(`${GAS_API_URL}?action=lookup&query=${encodeURIComponent(query)}`)
+    fetch(`${GAS_WEB_APP_URL}?action=lookup&query=${encodeURIComponent(q)}`)
       .then(res => res.json())
-      .then(data => {
-        if (data.status === "success") {
-          renderOrders(data.orders);
+      .then(res => {
+        if (res.status === "success") {
+          renderOrders(res.orders || []);
         } else {
-          container.innerHTML = `<div style="text-align:center; color:#ef4444; padding:20px;">${data.message}</div>`;
+          container.textContent = "查詢失敗：" + res.message;
         }
       })
-      .catch(err => {
-        container.innerHTML = `<div style="text-align:center; color:#ef4444; padding:20px;">連線失敗，請確認 API 設定或稍後再試。</div>`;
+      .catch(() => {
+        container.textContent = "網路連線失敗，請稍後再試。";
       });
   }
 
+  // 🛡️ DOM XSS 安全渲染與個資安全顯示
   function renderOrders(orders) {
-    const container = document.getElementById('resultsList');
-    container.innerHTML = "";
+    const container = document.getElementById('resultArea');
+    container.textContent = '';
 
     if (orders.length === 0) {
-      container.innerHTML = `<div style="text-align:center; background: #fff; padding: 30px; border-radius:16px; border:1px solid #e2e8f0; color:var(--text-sub);">查無相符的訂單紀錄，請確認輸入資料是否正確。</div>`;
+      container.textContent = "查無相關訂單資料，請確認輸入資訊是否正確。";
       return;
     }
 
-    orders.forEach(order => {
-      let statusClass = "badge-pending";
-      if (order.shippingStatus === "已出貨" || order.paymentStatus === "已付款") statusClass = "badge-paid";
-      if (order.shippingStatus === "已取消") statusClass = "badge-cancel";
+    orders.forEach(o => {
+      const card = document.createElement('div');
+      card.className = 'order-card';
 
-      const html = `
-        <div class="order-card">
-          <div class="order-header">
-            <span class="order-id">單號：${order.orderId}</span>
-            <span class="status-badge ${statusClass}">${order.shippingStatus || "處理中"} (${order.paymentStatus})</span>
-          </div>
-          <div class="order-detail">
-            <div><strong>下單時間：</strong>${order.orderTime}</div>
-            <div><strong>訂購姓名：</strong>${order.custName}</div>
-            <div><strong>付款方式：</strong>${order.paymentMethod}</div>
-            <div class="order-items"><strong>購買明細：</strong>\n${order.items}</div>
-            <div><strong>訂單總金額：</strong><span style="color:#ef4444; font-weight:800; font-size:1.1rem;">$ ${order.totalAmount}</span></div>
-          </div>
-        </div>
-      `;
-      container.innerHTML += html;
+      const header = document.createElement('div');
+      header.style.cssText = 'display:flex; justify-content:space-between; margin-bottom:8px; font-weight:800; color:#0f172a;';
+      header.textContent = `單號: ${o.orderId}`;
+
+      const time = document.createElement('div');
+      time.style.cssText = 'font-size:0.85rem; color:#64748b; margin-bottom:8px;';
+      time.textContent = `訂購時間: ${o.orderTime}`;
+
+      const cust = document.createElement('div');
+      cust.style.cssText = 'font-size:0.9rem; margin-bottom:8px; color:#334155;';
+      cust.textContent = `訂購人: ${o.custName} (${o.custPhone})`;
+
+      const items = document.createElement('div');
+      items.style.cssText = 'background:#f8fafc; padding:10px; border-radius:6px; font-size:0.9rem; margin-bottom:8px; white-space:pre-line; border:1px solid #e2e8f0;';
+      items.textContent = o.items;
+
+      const total = document.createElement('div');
+      total.style.cssText = 'font-weight:800; color:#e11d48; margin-bottom:8px; font-size:1rem;';
+      const amt = Number(o.totalAmount) || 0;
+      total.textContent = `總金額: $${amt.toLocaleString()} 元 (${o.paymentMethod})`;
+
+      const status = document.createElement('div');
+      status.style.cssText = 'display:flex; gap:8px;';
+      
+      const payBadge = document.createElement('span');
+      payBadge.className = (o.paymentStatus === '已付款' || o.paymentStatus === '已對帳') ? 'badge badge-success' : 'badge badge-pending';
+      payBadge.textContent = `付款狀態: ${o.paymentStatus}`;
+
+      const shipBadge = document.createElement('span');
+      shipBadge.className = (o.shippingStatus === '已出貨') ? 'badge badge-success' : 'badge badge-pending';
+      shipBadge.textContent = `出貨狀態: ${o.shippingStatus}`;
+
+      status.appendChild(payBadge);
+      status.appendChild(shipBadge);
+
+      card.appendChild(header);
+      card.appendChild(time);
+      card.appendChild(cust);
+      card.appendChild(items);
+      card.appendChild(total);
+      card.appendChild(status);
+
+      container.appendChild(card);
     });
   }
 </script>
-
 </body>
 </html>
