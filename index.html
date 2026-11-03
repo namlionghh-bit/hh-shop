@@ -522,12 +522,25 @@
       const imgContainer = document.createElement('div');
       imgContainer.className = 'img-container';
 
-      const img = document.createElement('img');
-      img.className = 'product-img';
-      img.src = parseImageUrl(p["商品圖片"]);
-      img.alt = p["商品名稱"] || "商品圖片";
-      img.onerror = function() { this.src = DEFAULT_IMG_URL; };
-      imgContainer.appendChild(img);
+      // 🟢 對應試算表 I 欄「商品網址」
+      const targetUrl = p["商品網址"] || p["商品連結"] || "";
+      
+      let imageElement = document.createElement('img');
+      imageElement.className = 'product-img';
+      imageElement.src = parseImageUrl(p["商品圖片"]);
+      imageElement.alt = p["商品名稱"] || "商品圖片";
+      imageElement.onerror = function() { this.src = DEFAULT_IMG_URL; };
+
+      if (targetUrl.trim() !== "") {
+        const linkWrapper = document.createElement('a');
+        linkWrapper.href = targetUrl.trim();
+        linkWrapper.target = "_blank";
+        linkWrapper.rel = "noopener noreferrer";
+        linkWrapper.appendChild(imageElement);
+        imgContainer.appendChild(linkWrapper);
+      } else {
+        imgContainer.appendChild(imageElement);
+      }
 
       const info = document.createElement('div');
       info.className = 'product-info';
