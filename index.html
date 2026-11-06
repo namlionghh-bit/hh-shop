@@ -356,6 +356,12 @@
         <input type="tel" id="custPhone" class="form-control" placeholder="例：0912345678" maxlength="10" required>
       </div>
 
+      <!-- 🟢 新增 Email 欄位（解決藍新刷卡按鈕鎖定） -->
+      <div class="form-group">
+        <label for="custEmail">電子郵件 * (接收刷卡與訂購通知信)</label>
+        <input type="email" id="custEmail" class="form-control" placeholder="例：example@email.com" required>
+      </div>
+
       <div class="form-group">
         <label for="custAddress">配送地址 *</label>
         <input type="text" id="custAddress" class="form-control" placeholder="請輸入完整的縣市鄉鎮配送地址" required>
@@ -418,7 +424,6 @@
 </footer>
 
 <script>
-  // 🟢 更新為最新的正式網址
   const GAS_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzCtmkO__BA3ymmWVaBp1C0s7REsZMRV1Rk355Lnw-ZHhVbTUevpC28d031LsPcSNE7/exec";
   
   function createFallbackImage() {
@@ -522,7 +527,6 @@
       const imgContainer = document.createElement('div');
       imgContainer.className = 'img-container';
 
-      // 🟢 對應試算表 I 欄「商品網址」
       const targetUrl = p["商品網址"] || p["商品連結"] || "";
       
       let imageElement = document.createElement('img');
@@ -703,12 +707,18 @@
   function submitOrder() {
     const custName = document.getElementById('custName').value.trim();
     const custPhone = document.getElementById('custPhone').value.trim();
+    const custEmail = document.getElementById('custEmail').value.trim();
     const custAddress = document.getElementById('custAddress').value.trim();
     const paymentMethod = document.getElementById('paymentMethod').value;
     const bankLast5 = document.getElementById('bankLast5').value.trim();
 
     if (!/^09\d{8}$/.test(custPhone)) {
       alert("請填寫正確的 10 碼行動電話號碼（必須為 09 開頭，例如：0912345678）");
+      return;
+    }
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(custEmail)) {
+      alert("請填寫正確的電子郵件格式！");
       return;
     }
 
@@ -741,7 +751,7 @@
       hostId: currentHostId,
       paymentMethod: paymentMethod,
       bankLast5: bankLast5,
-      customer: { name: custName, phone: custPhone, address: custAddress },
+      customer: { name: custName, phone: custPhone, email: custEmail, address: custAddress },
       items: items
     };
 
